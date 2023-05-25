@@ -8,5 +8,10 @@ export class VentaRoutes {
     public routes(app: Application): void {
         // app.route("/clientes/test").get(this.clienteController.test)
         app.route("/ventas").get(this.ventaController.getAllVenta)
+        app.route("/venta/:id").get(this.ventaController.getOneVenta)
+        app.route("/venta").post(this.ventaController.createVenta)
+        app.route("/venta/:id").put(this.ventaController.updateVenta)
+        app.route("/venta/:id").delete(this.ventaController.deleteVenta)
+        
     }
 }

@@ -19,6 +19,7 @@ export class ClienteController {
 
         }
     }
+    
     //metodo mostrar un cliente
     public async getOneCliente(req: Request, res: Response){
         const { id: idParam } = req.params
@@ -35,6 +36,7 @@ export class ClienteController {
             res.status(500).json({msg: "Error Internal"})
         }
     }
+
     //metodo de crear cliente
     public async createCliente(req: Request, res: Response){
         const {
@@ -56,9 +58,10 @@ export class ClienteController {
             const cliente:ClienteI = await Cliente.create({...body});
             res.status(200).json({cliente});
         } catch (error){
-
+            res.status(500).json({msg: "Error Internal"})
         }
     }
+
     //actualizar cliente
     public async updateCliente(req: Request, res: Response){
         const { id:pk } = req.params;
@@ -88,11 +91,12 @@ export class ClienteController {
                 where: {id:pk}
             });
         }catch (error) {
-
+            res.status(500).json({msg: "Error Internal"})
         }
         const cliente: ClienteI | null = await Cliente.findByPk(pk);
         if(cliente) return res.status(200).json({cliente})
     }
+
     //Eliminar cliente
     public async deleteCliente(req: Request, res: Response){
         const { id:pk } = req.params;
@@ -104,7 +108,7 @@ export class ClienteController {
             })
             res.status(200).json({msg:"Cliente eliminado"})
         } catch (error) {
-
+            res.status(500).json({msg: "Error Internal"})
         }
     }
 }
