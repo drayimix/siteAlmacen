@@ -4,6 +4,7 @@ import { where } from 'sequelize/types';
 import { Producto, ProductoI } from '../models/producto';
 
 export class ProductoController{
+    //metodo mo
     public async getAllProducto(req: Request, res:Response){
         try {
             // const cliente: ClienteI[] = await Cliente.findAll(

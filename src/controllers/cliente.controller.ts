@@ -5,15 +5,6 @@ import { Cliente, ClienteI } from '../models/cliente';
 
 export class ClienteController {
 
-
-    // public async test(req: Request, res:Response){
-    //     try {
-    //         res.send('hola, metodo test para Cliente')
-    //     } catch (error) {
-
-    //     }
-    // }
-
     //metodo mostrar clientes
     public async getAllCliente(req: Request, res:Response){
         try {
@@ -38,7 +29,7 @@ export class ClienteController {
                 }
             })
             if(cliente){
-                res.status(200).json(cliente)
+                res.status(200).json({cliente})
             } else return res.status(300).json({msg: "El cliente no existe"})
         } catch (error) {
             res.status(500).json({msg: "Error Internal"})
