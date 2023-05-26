@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import { database } from "../database/db";
+import { Venta } from "./venta";
 
 export class Cliente extends Model {
   public nombreCliente!: string;
@@ -48,3 +49,7 @@ Cliente.init(
     timestamps: true
   }
 );
+
+// Cliente.hasMany(Venta, {
+//   foreignKey: 'clienteId',
+// });

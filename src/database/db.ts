@@ -1,3 +1,4 @@
+
 const Sequelize = require('sequelize');
 
 const DB_NAME = 'almacen2022_mysql_nodejs';

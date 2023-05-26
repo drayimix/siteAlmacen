@@ -38,7 +38,7 @@ export class VentaController{
             subtotalVenta,
             impuestosVenta,
             descuentosVenta,
-            totalVenta
+            totalVenta,
         }=req.body;
 
         try{
@@ -47,7 +47,7 @@ export class VentaController{
                 subtotalVenta,
                 impuestosVenta,
                 descuentosVenta,
-                totalVenta
+                totalVenta,
             }
             const venta:VentaI = await Venta.create({...body});
             res.status(200).json({venta});

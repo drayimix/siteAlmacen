@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import { database } from "../database/db";
+import { TipoProducto } from "./tipoproducto";
 
 export class Producto extends Model{
     public nombreProducto!: string;
@@ -38,7 +39,15 @@ Producto.init(
         cantidadProducto: {
             type: DataTypes.INTEGER,
             allowNull: false
-          },
+        },
+        tipoproductoId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references:{
+                model: TipoProducto,
+                key: 'id'
+            }
+        }
     },
     {
         tableName: "productos",
