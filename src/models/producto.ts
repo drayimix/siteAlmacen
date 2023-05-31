@@ -39,14 +39,6 @@ Producto.init(
         cantidadProducto: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        tipoproductoId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references:{
-                model: TipoProducto,
-                key: 'id'
-            }
         }
     },
     {
@@ -55,3 +47,8 @@ Producto.init(
         timestamps: true
     }
 );
+
+// Asociación entre Producto y TipoProducto
+Producto.belongsTo(TipoProducto, { foreignKey: "tipoProductoId"}); // Agrega una columna tipoProductoId en la tabla productos
+// agregamos la relacion inversa de uno a muchos
+TipoProducto.hasMany(Producto, { foreignKey: "tipoProductoId" }); // Agrega una columna tipoProductoId en la tabla productos

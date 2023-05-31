@@ -46,7 +46,7 @@ export class ProductoController{
             marcaProducto,
             precioProducto,
             stockProducto,
-            cantidadProducto
+            cantidadProducto,
         }= req.body;
 
         try{

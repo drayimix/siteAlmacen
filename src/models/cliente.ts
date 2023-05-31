@@ -1,6 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import { database } from "../database/db";
-import { Venta } from "./venta";
+
 
 export class Cliente extends Model {
   public nombreCliente!: string;
@@ -8,6 +8,7 @@ export class Cliente extends Model {
   public telefonoCliente!: string;
   public correoCliente!: string;
   public passwordCliente!: string;
+  // public activo!: boolean;
 
 }
 
@@ -17,6 +18,7 @@ export interface ClienteI {
     telefonoCliente: string;
     correoCliente: string;
     passwordCliente: string;
+    // activo: boolean;
 }
 
 Cliente.init(
@@ -41,6 +43,10 @@ Cliente.init(
     passwordCliente: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+    activo: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       } 
   },
   {
@@ -48,8 +54,5 @@ Cliente.init(
     sequelize: database,
     timestamps: true
   }
-);
+)
 
-// Cliente.hasMany(Venta, {
-//   foreignKey: 'clienteId',
-// });

@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import { database } from "../database/db";
+
 import { Cliente } from "./cliente";
 
 export class Venta extends Model {
@@ -40,14 +41,6 @@ Venta.init(
         totalVenta: {
             type: DataTypes.FLOAT,
             allowNull: false
-        },
-        clienteId: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          references: {
-            model: Cliente,
-            key: 'id',
-          }
         }
     },
     {
@@ -57,8 +50,10 @@ Venta.init(
     }
 );
 
-Venta.belongsTo(Cliente, {
-  foreignKey: 'clienteId',
-  as: 'cliente',
-});
+// Asociación la tabla cliente con la tabla venta
+Venta.belongsTo(Cliente, { foreignKey: "clienteId" }); // Agrega una columna clienteId en la tabla ventas
+// agregamos la relacion inversa de uno a muchos
+Cliente.hasMany(Venta, { foreignKey: "clienteId" }); // Agrega una columna clienteId en la tabla ventas
+
+
 
