@@ -39,7 +39,7 @@ Producto.init(
         cantidadProducto: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
     },
     {
         tableName: "productos",

@@ -44,10 +44,10 @@ Cliente.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-    activo: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
-      } 
+    // activo: {
+    //     type: DataTypes.BOOLEAN,
+    //     defaultValue: true,
+    //   } 
   },
   {
     tableName: "clientes",
@@ -55,4 +55,3 @@ Cliente.init(
     timestamps: true
   }
 )
-

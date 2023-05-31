@@ -50,6 +50,7 @@ Venta.init(
     }
 );
 
+
 // Asociación la tabla cliente con la tabla venta
 Venta.belongsTo(Cliente, { foreignKey: "clienteId" }); // Agrega una columna clienteId en la tabla ventas
 // agregamos la relacion inversa de uno a muchos
