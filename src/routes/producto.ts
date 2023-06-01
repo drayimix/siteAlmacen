@@ -12,5 +12,6 @@ export class ProductoRoutes {
         app.route("/producto").post(this.productoController.createProducto)
         app.route("/producto/:id").put(this.productoController.updateProducto)
         app.route("/producto/:id").delete(this.productoController.deleteProducto)
+        app.route("/tipoproductos").delete(this.productoController.getAllTipoProducto)
     }
 }

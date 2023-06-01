@@ -1,15 +1,34 @@
 import {  Request, Response } from 'express';
-import { where } from 'sequelize/types';
+import { Model, where } from 'sequelize/types';
 
 import { Producto, ProductoI } from '../models/producto';
+import { TipoProducto,TipoProductoI } from '../models/tipoproducto';
 
 
 export class ProductoController{
     //metodo mostrar productos
     public async getAllProducto(req: Request, res:Response){
         try {
-            const producto: ProductoI[] = await Producto.findAll() // select * from clientes;
+            const producto: ProductoI[] = await Producto.findAll({
+                include: [
+                    {
+                        model: TipoProducto,
+                        as:'tipoProducto',
+                        attributes: ['nameTipoproducto']
+                    }
+                ]
+            })// select * from clientes;
             res.status(200).json({producto})
+        } catch (error) {
+
+        }
+    }
+
+    //mostrar tipo de producto
+    public async getAllTipoProducto(req: Request, res:Response){
+        try {
+            const tipoproducto: TipoProductoI[] = await TipoProducto.findAll() // select * from clientes;
+            res.status(200).json({tipoproducto})
         } catch (error) {
 
         }
@@ -42,7 +61,13 @@ export class ProductoController{
             precioProducto,
             stockProducto,
             cantidadProducto,
+            tipoProductoId
         }= req.body;
+
+        const tipoProducto = await TipoProducto.findByPk(tipoProductoId);
+        if(!tipoProducto){
+            return res.status(404).json({ error: 'El tipo de producto no existe' });
+        }
 
         try{
             let body: ProductoI = {
@@ -50,7 +75,7 @@ export class ProductoController{
                 marcaProducto,
                 precioProducto,
                 stockProducto,
-                cantidadProducto
+                cantidadProducto,
             }
             const producto:ProductoI = await Producto.create({...body});
             res.status(200).json({producto});
