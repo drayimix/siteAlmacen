@@ -8,7 +8,7 @@ export class Cliente extends Model {
   public telefonoCliente!: string;
   public correoCliente!: string;
   public passwordCliente!: string;
-  // public activo!: boolean;
+  public activo!: boolean;
 
 }
 
@@ -18,7 +18,7 @@ export interface ClienteI {
     telefonoCliente: string;
     correoCliente: string;
     passwordCliente: string;
-    // activo: boolean;
+    activo: boolean;
 }
 
 Cliente.init(
@@ -44,10 +44,10 @@ Cliente.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-    // activo: {
-    //     type: DataTypes.BOOLEAN,
-    //     defaultValue: true,
-    //   } 
+    activo: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      } 
   },
   {
     tableName: "clientes",

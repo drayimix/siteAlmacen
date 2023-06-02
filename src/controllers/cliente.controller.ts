@@ -8,11 +8,6 @@ export class ClienteController {
     //metodo mostrar clientes
     public async getAllCliente(req: Request, res:Response){
         try {
-            // const cliente: ClienteI[] = await Cliente.findAll(
-            //     {
-            //         where: {activo: true}
-            //     }
-            // ) 
             const cliente: ClienteI[] = await Cliente.findAll() // select * from clientes;
             res.status(200).json({cliente})
         } catch (error) {
@@ -44,7 +39,8 @@ export class ClienteController {
             direccionCliente,
             telefonoCliente,
             correoCliente,
-            passwordCliente
+            passwordCliente,
+            activo
         }=req.body;
 
         try{
@@ -53,7 +49,8 @@ export class ClienteController {
                 direccionCliente,
                 telefonoCliente,
                 correoCliente,
-                passwordCliente
+                passwordCliente,
+                activo
             }
             const cliente:ClienteI = await Cliente.create({...body});
             res.status(200).json({cliente});
@@ -72,7 +69,8 @@ export class ClienteController {
             direccionCliente,
             telefonoCliente,
             correoCliente,
-            passwordCliente
+            passwordCliente,
+            activo
         }=req.body
 
         try{
@@ -81,7 +79,8 @@ export class ClienteController {
                 direccionCliente,
                 telefonoCliente,
                 correoCliente,
-                passwordCliente
+                passwordCliente,
+                activo
             }
 
             const clienteExist: ClienteI | null = await Cliente.findByPk(pk);
