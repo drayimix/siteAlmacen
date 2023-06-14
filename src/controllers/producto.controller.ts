@@ -76,6 +76,7 @@ export class ProductoController{
                 precioProducto,
                 stockProducto,
                 cantidadProducto,
+                tipoProductoId
             }
             const producto:ProductoI = await Producto.create({...body});
             res.status(200).json({producto});
@@ -94,7 +95,8 @@ export class ProductoController{
             marcaProducto,
             precioProducto,
             stockProducto,
-            cantidadProducto
+            cantidadProducto,
+            tipoProductoId
         }= req.body;
 
         try{
@@ -103,7 +105,8 @@ export class ProductoController{
                 marcaProducto,
                 precioProducto,
                 stockProducto,
-                cantidadProducto
+                cantidadProducto,
+                tipoProductoId
             }
             const productoExist: ProductoI | null = await Producto.findByPk(pk);
             if(!productoExist) return res.status(500).json({msg:'El producto no existe'});
